@@ -24,7 +24,6 @@ public class Server extends Thread {
     String recievedQuery = null;
     accountInfo pub = null;
     itemInfo item = null;
-    historyInfo history = null;
     cartInfo cart = null;
     String validation;
     
