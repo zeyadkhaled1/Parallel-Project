@@ -93,7 +93,7 @@ public class Items extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         jLabel9.setText("📱");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -271,7 +271,7 @@ jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         new equipment().setVisible(true);
         this.dispose();
     }
- private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {                                     
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {                                     
         // TODO add your handling code here:
         new mobiles().setVisible(true);
         this.dispose();
@@ -344,3 +344,19 @@ Items a = new Items();
             }
         });
     }
+// Variables declaration - do not modify                     
+    private javax.swing.JLabel Exit;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    // End of variables declaration                   
+}
