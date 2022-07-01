@@ -166,3 +166,24 @@ jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
                             .addComponent(jLabel3))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
+
+
+        jPanel4.setBackground(new java.awt.Color(0, 51, 204));
+
+        jLabel80.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+        jLabel80.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel80.setText("👥 ACCOUNT");
+        jLabel80.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel80jLabel70MouseClicked(evt);
+            }
+        });
+
+        jLabel81.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel81.setText("🛒 CART");
+        jLabel81.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel81jLabel71MouseClicked(evt);
+            }
+        });
