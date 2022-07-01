@@ -22,3 +22,51 @@ public class MyCart extends javax.swing.JFrame {
     int MyIndex;
     itemInfo itemTableInfo;
     int availableAmount;
+ public MyCart() {
+        initComponents();
+        totalPayment = 0;
+        records = new Vector();
+          
+                    
+            try {
+                 clientSocket = new Socket("localhost",1400);
+                 query = "Select * from CART where USERNAME ='" + Market_Place.userNameSaved + "'";
+        try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            //out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                br = new ObjectInputStream(clientSocket.getInputStream());
+                records =(Vector)br.readObject();
+                br.close();
+                int i =0;
+                  
+                  
+                   DefaultTableModel dt = (DefaultTableModel) CartTable.getModel();  
+                   dt.setRowCount(0);
+                  while(i < records.size())
+                  {
+                      cart = (cartInfo)records.elementAt(i);
+                      Vector v = new Vector();
+                      v.add(cart.id);
+                      v.add(cart.itemName);
+                      v.add(cart.price);
+                      v.add(cart.amount);
+                      v.add(cart.total);
+                      totalPayment = totalPayment + Integer.valueOf(cart.total);                        
+                      dt.addRow(v);                      
+                      i++;                      
+                  }
+                 // Market_Place.id = Integer.valueOf(cart.id) + 1;
+                  records.removeAllElements();
+                  
+                  
+                    
+            } catch (IOException ex) {
+                Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
