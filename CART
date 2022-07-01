@@ -87,3 +87,8 @@ public class MyCart extends javax.swing.JFrame {
         RemoveBtn = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         CartTable = new javax.swing.JTable();
+     minus = new javax.swing.JButton();
+        plus = new javax.swing.JButton();
+        amountLable = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
