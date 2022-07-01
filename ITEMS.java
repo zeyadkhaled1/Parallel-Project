@@ -187,3 +187,13 @@ jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
                 jLabel81jLabel71MouseClicked(evt);
             }
         });
+      
+        
+        jLabel82.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel82.setText("🔌 ITEMS");
+        jLabel82.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel82jLabel71MouseClicked(evt);
+            }
+        });
