@@ -48,7 +48,7 @@ public class Server extends Thread {
                 client = server.accept();
                 br = new ObjectInputStream(client.getInputStream());
                 recievedQuery = (String) br.readObject();
-              if(recievedQuery.substring(0,6).equals("Select")){
+                if(recievedQuery.substring(0,6).equals("Select")){
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     con = DriverManager.getConnection("jdbc:derby://localhost:1527/MarketDB ","zyad","zyad");
@@ -72,6 +72,80 @@ public class Server extends Thread {
                   out.writeObject(records);
                   out.close();
                     }
+                    else if(recievedQuery.substring(0,15).equals("Select * from I")){
+                        while(rs.next())
+                    {
+                        item = new itemInfo();
+                        item.id = rs.getString(1);
+                        item.name = rs.getString(2);
+                        item.price = rs.getString(3);
+                        item.quantity = rs.getString(4);
+                        item.category = rs.getString(5);
+                        records.addElement(item);
+                        System.out.println("row returned");
+                    }
+
+                  out.writeObject(records);
+                  out.close();
+                    }
+                    else if(recievedQuery.substring(0,15).equals("Select * from C")){
+                         while(rs.next())
+                    {
+                        cart = new cartInfo();
+                        cart.id = rs.getString(1);
+                        cart.itemName = rs.getString(3);
+                        cart.userName = rs.getString(2);
+                        cart.price = rs.getString(4);
+                        cart.amount = rs.getString(5);
+                        cart.total = rs.getString(6);
+                        lock.lock();
+                             try {
+                                 records.addElement(cart);
+                                 System.out.println("row returned");
+                             } finally {
+                                 lock.unlock();
+                             }
+                    }
+
+                  out.writeObject(records);
+                  out.close();
+                        
+                    }
+                    else if(recievedQuery.substring(0,15).equals("Select * from H")){
+                         while(rs.next())
+                    {
+                        cart = new cartInfo();
+                        cart.id = rs.getString(1);
+                        cart.itemName = rs.getString(2);
+                        cart.userName = rs.getString(3);
+                        cart.price = rs.getString(4);
+                        cart.amount = rs.getString(5);
+                        cart.total = rs.getString(6);
+                        lock.lock();
+                             try {
+                                 records.addElement(cart);
+                                 System.out.println("row returned");
+                             } finally {
+                                 lock.unlock();
+                             }
+                    }
+
+                  out.writeObject(records);
+                  out.close();
+                        
+                    }
+                    else if(recievedQuery.substring(0,15).equals("Select COUNT(*)")){
+                         while(rs.next())
+                    {
+                        validation = rs.getString(1);
+                        records.addElement(validation);
+                        System.out.println("row returned");
+                    }
+
+                  out.writeObject(records);
+                  out.close();
+                        
+                    }
                     
                     
                 } catch (ClassNotFoundException ex) {
@@ -80,7 +154,21 @@ public class Server extends Thread {
                     Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
                 }
                }
-            }
+              
+                else {
+              
+                 try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    con = DriverManager.getConnection("jdbc:derby://localhost:1527/MarketDB ","zyad","zyad");
+                    stmt = con.createStatement();
+                    stmt.executeUpdate(recievedQuery);
+                                       } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                }          
+                }
+            } 
             catch (IOException ex) {
                 Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -88,6 +176,8 @@ public class Server extends Thread {
             }
             
         }
+                  
+    }
   
   
   
