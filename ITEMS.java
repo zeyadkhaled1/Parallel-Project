@@ -241,3 +241,33 @@ jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         pack();
     }// </editor-fold>   
     
+    private void ExitMouseClicked(java.awt.event.MouseEvent evt) {                                  
+        // TODO add your handling code here:
+        this.dispose();
+    }                                 
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new computers().setVisible(true);
+        this.dispose();
+    }                                    
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new mobiles().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }                                    
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new mobiles().setVisible(true);
+        this.dispose();
+    }                                    
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new equipment().setVisible(true);
+        this.dispose();
+    }                                    
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        // TODO add your handling code here:
+        new equipment().setVisible(true);
+        this.dispose();
+    }
