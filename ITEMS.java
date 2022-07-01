@@ -291,3 +291,17 @@ this.setLocation(this.getX() + evt.getX() - mouseX,this.getY() + evt.getY() - mo
 mouseX = evt.getX();
         mouseY = evt.getY();
     }                       
+    private void jLabel80jLabel70MouseClicked(java.awt.event.MouseEvent evt) {                                              
+        new Accounts().setVisible(true);
+        this.dispose();
+    }                                             
+
+    private void jLabel81jLabel71MouseClicked(java.awt.event.MouseEvent evt) {                                              
+        new MyCart().setVisible(true);
+        this.dispose();
+    }                                             
+
+    private void jLabel82jLabel71MouseClicked(java.awt.event.MouseEvent evt) {                                              
+        //new MyCart().setVisible(true);
+        //this.dispose();
+    }
