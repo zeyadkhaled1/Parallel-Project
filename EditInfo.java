@@ -14,10 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Alaa
- */
+
 public class EditInfo extends javax.swing.JFrame {
 
     int i=0;
