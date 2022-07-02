@@ -136,3 +136,9 @@ public class MyCart extends javax.swing.JFrame {
                 RemoveBtnMouseClicked(evt);
             }
         });
+         RemoveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveBtnjButton5ActionPerformed(evt);
+            }
+        });
+
