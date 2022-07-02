@@ -96,3 +96,4 @@ public class MyCart extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
         jLabel81 = new javax.swing.JLabel();
+        jLabel82 = new javax.swing.JLabel();
