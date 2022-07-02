@@ -105,3 +105,9 @@ public class MyCart extends javax.swing.JFrame {
                 jPanel1MouseDragged(evt);
             }
         });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
+
