@@ -141,4 +141,20 @@ public class MyCart extends javax.swing.JFrame {
                 RemoveBtnjButton5ActionPerformed(evt);
             }
         });
-
+        CartTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "id", "ItemName", "Price", "Amount", "Total"
+            }
+        ));
+        CartTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CartTableMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(CartTable);
