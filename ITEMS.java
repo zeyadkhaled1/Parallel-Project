@@ -93,7 +93,7 @@ public class Items extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         jLabel9.setText("📱");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,3 +241,122 @@ jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         pack();
     }// </editor-fold>   
     
+    private void ExitMouseClicked(java.awt.event.MouseEvent evt) {                                  
+        // TODO add your handling code here:
+        this.dispose();
+    }                                 
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new computers().setVisible(true);
+        this.dispose();
+    }                                    
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new mobiles().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }                                    
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new mobiles().setVisible(true);
+        this.dispose();
+    }                                    
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new equipment().setVisible(true);
+        this.dispose();
+    }                                    
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        // TODO add your handling code here:
+        new equipment().setVisible(true);
+        this.dispose();
+    }
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        // TODO add your handling code here:
+        new mobiles().setVisible(true);
+        this.dispose();
+    }                                    
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        new computers().setVisible(true);
+        this.dispose();
+    }                                     
+
+    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {                                     
+this.setLocation(this.getX() + evt.getX() - mouseX,this.getY() + evt.getY() - mouseY);
+    }                                    
+
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {                                     
+mouseX = evt.getX();
+        mouseY = evt.getY();
+    }                       
+    private void jLabel80jLabel70MouseClicked(java.awt.event.MouseEvent evt) {                                              
+        new Accounts().setVisible(true);
+        this.dispose();
+    }                                             
+
+    private void jLabel81jLabel71MouseClicked(java.awt.event.MouseEvent evt) {                                              
+        new MyCart().setVisible(true);
+        this.dispose();
+    }                                             
+
+    private void jLabel82jLabel71MouseClicked(java.awt.event.MouseEvent evt) {                                              
+        //new MyCart().setVisible(true);
+        //this.dispose();
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                
+Items a = new Items();
+                a.pack();
+                a.setLocationRelativeTo(null);
+                a.setVisible(true);
+            }
+        });
+    }
+// Variables declaration - do not modify                     
+    private javax.swing.JLabel Exit;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    // End of variables declaration                   
+}
