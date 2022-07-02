@@ -128,3 +128,11 @@ public class MyCart extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 24)); // NOI18N
         jLabel1.setText("CART");
+        RemoveBtn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        RemoveBtn.setForeground(new java.awt.Color(51, 51, 51));
+        RemoveBtn.setText("Remove from cart");
+        RemoveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RemoveBtnMouseClicked(evt);
+            }
+        });
