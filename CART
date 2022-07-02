@@ -110,4 +110,6 @@ public class MyCart extends javax.swing.JFrame {
                 jPanel1MousePressed(evt);
             }
         });
-
+  PurchaseBtn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        PurchaseBtn.setForeground(new java.awt.Color(51, 51, 51));
+        PurchaseBtn.setText("Purchase items");
