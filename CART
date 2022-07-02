@@ -524,3 +524,232 @@ public class MyCart extends javax.swing.JFrame {
      
     }//GEN-LAST:event_PurchaseBtnMouseClicked
 
+
+
+
+  private void PurchaseBtnjButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseBtnjButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PurchaseBtnjButton5ActionPerformed
+
+    private void RemoveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveBtnMouseClicked
+        DefaultTableModel model=(DefaultTableModel)CartTable.getModel();
+        model.removeRow(MyIndex);
+        query = "Delete from CART where USERNAME='" + Market_Place.userNameSaved + "'"+"AND ID=" + idsaved ;
+        try {
+            clientSocket = new Socket("localhost",1400);
+             try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        } catch (IOException ex) {
+            Logger.getLogger(MyCart.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        query = "Update ITEMS set QUANTITY = QUANTITY +"+ amount + "Where NAME='" + itemName+"'";
+         try {
+            clientSocket = new Socket("localhost",1400);
+             try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        } catch (IOException ex) {
+            Logger.getLogger(MyCart.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+    }//GEN-LAST:event_RemoveBtnMouseClicked
+
+    private void RemoveBtnjButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnjButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RemoveBtnjButton5ActionPerformed
+
+    private void CartTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartTableMouseClicked
+        DefaultTableModel model=(DefaultTableModel)CartTable.getModel();
+        MyIndex=CartTable.getSelectedRow();
+        itemName = model.getValueAt(MyIndex, 1).toString();
+        price = model.getValueAt(MyIndex, 2).toString();
+        amount = model.getValueAt(MyIndex, 3).toString();
+        total = model.getValueAt(MyIndex, 4).toString(); 
+         idsaved = model.getValueAt(MyIndex, 0).toString(); 
+        amountLable.setText(amount);
+    }//GEN-LAST:event_CartTableMouseClicked
+
+    private void minusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minusActionPerformed
+
+    private void plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plusActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+      this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        this.setLocation(this.getX() + evt.getX() - mouseX,this.getY() + evt.getY() - mouseY);
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        mouseX = evt.getX();
+        mouseY = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jLabel80jLabel70MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel80jLabel70MouseClicked
+        new Accounts().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel80jLabel70MouseClicked
+
+    private void jLabel81jLabel71MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel81jLabel71MouseClicked
+        //        new MyCart().setVisible(true);
+        // this.dispose();
+    }//GEN-LAST:event_jLabel81jLabel71MouseClicked
+
+    private void jLabel82jLabel71MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel82jLabel71MouseClicked
+        new Items().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel82jLabel71MouseClicked
+
+    private void plusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusMouseClicked
+         records = new Vector();
+         try {
+                 clientSocket = new Socket("localhost",1400);
+                 query = "Select * from ITEMS where NAME ='" + itemName + "'";
+        try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            //out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                br = new ObjectInputStream(clientSocket.getInputStream());
+                records =(Vector)br.readObject();
+                br.close();
+                int i =0;
+            while(i < records.size())
+                  {
+                      itemTableInfo = (itemInfo)records.elementAt(i);
+                      availableAmount = Integer.valueOf(itemTableInfo.quantity);                    
+                      i++;                      
+                  }
+                  records.removeAllElements();
+                          
+            } catch (IOException ex) {
+                Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            if( availableAmount<1 ) {
+                  JOptionPane.showMessageDialog(this, "Not Enough Quantity");
+            }
+            else{
+                amount = String.valueOf(Integer.valueOf(amount)+1);
+                amountLable.setText(amount);
+                
+                DefaultTableModel model=(DefaultTableModel)CartTable.getModel();
+                model.setValueAt(amount,MyIndex,3);
+                total = String.valueOf(Integer.valueOf(total)+Integer.valueOf(price));
+                model.setValueAt(total,MyIndex,4);
+               query = "UPDATE CART SET AMOUNT= AMOUNT + 1 , TOTALPRICE =TOTALPRICE +"+price+"WHERE USERNAME='" + Market_Place.userNameSaved + "' AND ID=" + idsaved;
+                 try {
+                     clientSocket = new Socket("localhost",1400);
+                 } catch (IOException ex) {
+                     Logger.getLogger(MyCart.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+
+                try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                query = "update ITEMS set QUANTITY = QUANTITY - 1 WHERE NAME ='"+itemName+"'";
+                 try {
+                     clientSocket = new Socket("localhost",1400);
+                 } catch (IOException ex) {
+                     Logger.getLogger(MyCart.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            }
+            
+    }//GEN-LAST:event_plusMouseClicked
+
+    private void minusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusMouseClicked
+            if( Integer.valueOf(amount)<=1) {
+                JOptionPane.showMessageDialog(this, "Cannot be decreamented,you can remove it from your card");
+            }
+            else{
+                amount = String.valueOf(Integer.valueOf(amount)-1);
+                amountLable.setText(amount);
+                DefaultTableModel model=(DefaultTableModel)CartTable.getModel();
+                model.setValueAt(amount,MyIndex,3);
+                total = String.valueOf(Integer.valueOf(total)-Integer.valueOf(price));
+                model.setValueAt(total,MyIndex,4);
+                query = "UPDATE CART SET AMOUNT= AMOUNT - 1 , TOTALPRICE =TOTALPRICE -"+price+"WHERE USERNAME='" + Market_Place.userNameSaved + "' AND ID=" + idsaved;
+            try {
+                     clientSocket = new Socket("localhost",1400);
+                 } catch (IOException ex) {
+                     Logger.getLogger(MyCart.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+
+                try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                query = "update ITEMS set QUANTITY = QUANTITY + 1 WHERE NAME ='"+itemName+"'";
+                 try {
+                     clientSocket = new Socket("localhost",1400);
+                 } catch (IOException ex) {
+                     Logger.getLogger(MyCart.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                try {
+            out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(query);
+            out.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Accounts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            }
+            
+    }//GEN-LAST:event_minusMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MyCart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MyCart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MyCart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MyCart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
