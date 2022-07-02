@@ -785,5 +785,5 @@ MyCart a = new MyCart();
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton minus;
     private javax.swing.JButton plus;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration//GEN-END:variables 
 }
