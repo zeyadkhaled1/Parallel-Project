@@ -118,3 +118,7 @@ public class MyCart extends javax.swing.JFrame {
                 PurchaseBtnMouseClicked(evt);
             }
         });
+        
+
+        PurchaseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
