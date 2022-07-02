@@ -122,3 +122,8 @@ public class MyCart extends javax.swing.JFrame {
 
         PurchaseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                  PurchaseBtnjButton5ActionPerformed(evt);
+            }
+        });
+
+
